@@ -13,13 +13,7 @@ function AppointmentCards() {
   }
 
   for (const app of appointments) {
-        const card = Card(
-        app.name,
-        app.doctor,
-        app.purpose,
-        app.date,
-        app.slot,
-        );
+        const card = Card(app);
         container.appendChild(card);
     }
 

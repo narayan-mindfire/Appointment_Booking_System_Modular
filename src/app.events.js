@@ -1,8 +1,3 @@
-import getElements from "./utils/dom";
-
-// import state from "./states.js";
-// import { utilService } from "./logic.service.js";
-// import { formService } from "./form.manager.js";
 import formService from "./services/form.service";
 import { markRequiredFields, setMinDateForInput, updateAvailableSlots } from "./services/dom.service";
 import { saveData } from "./app.storage";
@@ -10,7 +5,6 @@ import { renderApp } from "./components/App";
 import state from "./app.state";
 import { sortSetter } from "./app.logic";
 
-// const utils = utilService();
 const formModule = formService();
 
 /**
@@ -60,14 +54,6 @@ function registerEvents() {
   document.addEventListener("click", formModule.handleDoctorDropdownClick);
   doctorEle.addEventListener("click", formModule.handleDoctorInputFieldClick);
   sortEle.addEventListener("change", sortSetter);
-
-//   window.addEventListener("resize", () => {
-//   if (window.innerWidth <= 768) {
-//     appointmentCards.classList.remove("hidden");
-//     appointmentTable.classList.add("hidden");
-//     state.setGrid("true");
-//   }
-// });
 
 }
 

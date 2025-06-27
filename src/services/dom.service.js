@@ -106,6 +106,5 @@ function markRequiredFields() {
         }
     });
 }
-    
 
 export {resetErrorMessages, showToast, updateAvailableSlots, renderDoctorOptions, setMinDateForInput, markRequiredFields}

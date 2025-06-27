@@ -26,13 +26,7 @@ function Table(){
         appointments = sortAppointments(appointments, state.sortAppointmentsBy);
     }
     for (const app of appointments) {
-        const row = TableRow(
-        app.name,
-        app.doctor,
-        app.date,
-        app.slot,
-        app.purpose,
-        );
+        const row = TableRow(app);
         tableBody.appendChild(row);
     }
 

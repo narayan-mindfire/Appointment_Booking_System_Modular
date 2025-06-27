@@ -17,13 +17,13 @@ function AppointmentList() {
     const sortSelect = document.createElement("select");
     sortSelect.id = "sort";
     sortSelect.innerHTML = `
-    <option>Sort appointments (default)</option>
-    <option id="sDate" value="date">Sort by date (newest to oldest)</option>
-    <option id="sDate" value="dateR">Sort by date (oldest to newest)</option>
-    <option id="sDname" value="doctor">Sort by doctor name (A-Z)</option>
-    <option id="sDname" value="doctorR">Sort by doctor name (Z-A)</option>
-    <option id="sPname" value="name">Sort by patient name (A-Z)</option>
-    <option id="sPname" value="nameR">Sort by patient name (Z-A)</option>
+        <option>Sort appointments (default)</option>
+        <option id="sDate" value="date">Sort by date (newest to oldest)</option>
+        <option id="sDate" value="dateR">Sort by date (oldest to newest)</option>
+        <option id="sDname" value="doctor">Sort by doctor name (A-Z)</option>
+        <option id="sDname" value="doctorR">Sort by doctor name (Z-A)</option>
+        <option id="sPname" value="name">Sort by patient name (A-Z)</option>
+        <option id="sPname" value="nameR">Sort by patient name (Z-A)</option>
     `;
 
     const btnHalf = document.createElement("button");
