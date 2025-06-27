@@ -1,10 +1,10 @@
 import { SLOTS, VALIDATION_CONFIG } from "../app.const";
 import state from "../app.state";
-
 /**
  * Clears all validation error messages.
  */
-function resetErrorMessages() {   
+function resetErrorMessages() {
+    document.querySelectorAll(".error-message").forEach(ele => ele.textContent = "");
 }
 
 /**
@@ -66,6 +66,7 @@ function updateAvailableSlots() {
         }
     });
 }
+
 
 function setMinDateForInput() {
     const today = new Date();
