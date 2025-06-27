@@ -1,11 +1,9 @@
-import formService from "./services/form.service";
-import { markRequiredFields, setMinDateForInput, updateAvailableSlots } from "./services/dom.service";
 import { saveData } from "./app.storage";
 import { renderApp } from "./components/App";
 import state from "./app.state";
 import { sortSetter } from "./app.logic";
 
-const formModule = formService();
+// const formModule = formService();
 
 /**
  * all application events are registered here
@@ -42,17 +40,7 @@ function registerEvents() {
         renderApp();
         registerEvents();
     });
-
-    setMinDateForInput()
-    formModule.setDoctors()
-    markRequiredFields()
-
-
-  form.addEventListener("submit", formModule.handleForm);
-  doctorEle.addEventListener("change", updateAvailableSlots);
-  dateEle.addEventListener("change", updateAvailableSlots);
-  document.addEventListener("click", formModule.handleDoctorDropdownClick);
-  doctorEle.addEventListener("click", formModule.handleDoctorInputFieldClick);
+    
   sortEle.addEventListener("change", sortSetter);
 
 }

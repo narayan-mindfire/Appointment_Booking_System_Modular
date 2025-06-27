@@ -1,7 +1,6 @@
 import state from "../app.state";
 import { resetErrorMessages, showToast, updateAvailableSlots } from "../services/dom.service";
 
-
 /**
  * Loads appointment data into form for editing.
  * @param {number} id - Appointment ID

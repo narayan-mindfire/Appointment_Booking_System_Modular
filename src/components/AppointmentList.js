@@ -1,3 +1,4 @@
+import { sortSetter } from "../app.logic";
 import state from "../app.state";
 import AppointmentCards from "./AppointmentCards";
 import Table from "./Table";
@@ -56,6 +57,7 @@ function AppointmentList() {
     btnFull.style.backgroundColor = "#c5c4c4";
     }
 
+    sortSelect.addEventListener("change", sortSetter);
     return parent;
 }
 

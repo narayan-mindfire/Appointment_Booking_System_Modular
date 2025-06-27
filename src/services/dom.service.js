@@ -1,12 +1,10 @@
 import { SLOTS, VALIDATION_CONFIG } from "../app.const";
 import state from "../app.state";
-import DoctorOption from "../components/DoctorOption";
 
 /**
  * Clears all validation error messages.
  */
-function resetErrorMessages() {
-    document.querySelectorAll(".error-message").forEach(ele => ele.textContent = "");
+function resetErrorMessages() {   
 }
 
 /**
@@ -69,22 +67,6 @@ function updateAvailableSlots() {
     });
 }
 
-/**
- * Renders a list of doctor options.
- * @param {string[]} list 
- */
-function renderDoctorOptions(list) {
-    console.log("renderdoc called")
-    const docList = document.getElementById("doc-options");
-    docList.innerHTML = "";
-    list.forEach(doc => {
-        docList.appendChild(DoctorOption(doc));
-    });
-}
-
-/**
- * Sets the minimum date for the appointment date input to today.
- */
 function setMinDateForInput() {
     const today = new Date();
     const year = today.getFullYear();
@@ -107,4 +89,4 @@ function markRequiredFields() {
     });
 }
 
-export {resetErrorMessages, showToast, updateAvailableSlots, renderDoctorOptions, setMinDateForInput, markRequiredFields}
+export {resetErrorMessages, showToast, updateAvailableSlots, markRequiredFields, setMinDateForInput}
