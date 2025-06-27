@@ -20,6 +20,8 @@ function loadFromStorage(){
 }
 
 export {
-    loadFromStorage
+    loadFromStorage,
+    loadData,
+    saveData
 }
 
