@@ -1,23 +1,26 @@
 import { sortSetter } from "../app.logic";
 import state from "../app.state";
+import { saveData } from "../app.storage";
+import { renderApp } from "./App";
 import AppointmentCards from "./AppointmentCards";
 import Table from "./Table";
 
 function AppointmentList() {
-    const parent = document.createElement("div");
-    parent.className = "appointment-list";
-    const header = document.createElement("div");
-    header.className = "appointment-head";
+  console.log("appointment rendered");
+  const parent = document.createElement("div");
+  parent.className = "appointment-list";
+  const header = document.createElement("div");
+  header.className = "appointment-head";
 
-    const heading = document.createElement("h2");
-    heading.textContent = "Appointments List";
+  const heading = document.createElement("h2");
+  heading.textContent = "Appointments List";
 
-    const appOptions = document.createElement("div");
-    appOptions.className = "app-options";
+  const appOptions = document.createElement("div");
+  appOptions.className = "app-options";
 
-    const sortSelect = document.createElement("select");
-    sortSelect.id = "sort";
-    sortSelect.innerHTML = `
+  const sortSelect = document.createElement("select");
+  sortSelect.id = "sort";
+  sortSelect.innerHTML = `
         <option>Sort appointments (default)</option>
         <option id="sDate" value="date">Sort by date (newest to oldest)</option>
         <option id="sDate" value="dateR">Sort by date (oldest to newest)</option>
@@ -27,38 +30,50 @@ function AppointmentList() {
         <option id="sPname" value="nameR">Sort by patient name (Z-A)</option>
     `;
 
-    const btnHalf = document.createElement("button");
-    const btnFull = document.createElement("button");
-    btnHalf.title = "Grid view";
-    btnFull.title = "List view";
-    btnHalf.id = "btn-half";
-    btnFull.id = "btn-full";
+  const btnHalf = document.createElement("button");
+  const btnFull = document.createElement("button");
+  btnHalf.title = "Grid view";
+  btnFull.title = "List view";
+  btnHalf.id = "btn-half";
+  btnFull.id = "btn-full";
 
-    btnHalf.innerHTML = `<i class="fas fa-th-large"></i>`;
-    btnFull.innerHTML = `<i class="fas fa-list"></i>`;
+  btnHalf.innerHTML = `<i class="fas fa-th-large"></i>`;
+  btnFull.innerHTML = `<i class="fas fa-list"></i>`;
 
-    appOptions.appendChild(sortSelect);
-    appOptions.appendChild(btnHalf);
-    appOptions.appendChild(btnFull);
+  appOptions.appendChild(sortSelect);
+  appOptions.appendChild(btnHalf);
+  appOptions.appendChild(btnFull);
 
-    header.appendChild(heading);
-    header.appendChild(appOptions);
+  header.appendChild(heading);
+  header.appendChild(appOptions);
 
-    parent.appendChild(header);
+  parent.appendChild(header);
 
-    const isGridSelected = state.isGridSelected;
-    if (isGridSelected) {
+  const isGridSelected = state.isGridSelected;
+  if (isGridSelected) {
     parent.appendChild(AppointmentCards());
     btnHalf.style.backgroundColor = "#c5c4c4";
     btnFull.style.backgroundColor = "#fff";
-    } else {
+  } else {
     parent.appendChild(Table());
     btnHalf.style.backgroundColor = "#fff";
     btnFull.style.backgroundColor = "#c5c4c4";
-    }
+  }
 
-    sortSelect.addEventListener("change", sortSetter);
-    return parent;
+  // event listeners
+  sortSelect.addEventListener("change", sortSetter);
+  btnFull?.addEventListener("click", () => {
+    state.isGridSelected = false;
+    saveData("isGridSelected", false);
+    renderApp();
+  });
+
+  btnHalf?.addEventListener("click", () => {
+    state.isGridSelected = true;
+    saveData("isGridSelected", true);
+    renderApp();
+  });
+  return parent;
 }
 
 export default AppointmentList;

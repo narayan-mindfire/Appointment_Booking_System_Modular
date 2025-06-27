@@ -1,4 +1,3 @@
-import { registerEvents } from "./app.events";
 import state from "./app.state";
 import { renderApp } from "./components/App";
 
@@ -9,7 +8,7 @@ import { renderApp } from "./components/App";
  * @returns {Array} - Sorted appointment array.
  */
 function sortAppointments(appointments, sortBy) {
-  const sorted = [...appointments]; // clone to avoid mutating original
+  const sorted = [...appointments]; 
 
   switch (sortBy) {
     case "date":
@@ -38,7 +37,6 @@ function sortAppointments(appointments, sortBy) {
 function sortSetter(event) {
     state.sortAppointmentsBy = event.target.value;
     renderApp();
-    registerEvents();
-  }
+}
 
 export { sortAppointments, sortSetter };

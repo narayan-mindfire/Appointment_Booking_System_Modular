@@ -1,4 +1,3 @@
-import { registerEvents } from "../app.events";
 import state from "../app.state";
 import { saveData } from "../app.storage";
 import { renderApp } from "../components/App";

@@ -6,6 +6,7 @@ import { validationService } from "../services/validation.service";
 import { renderApp } from "./App";
 
 function Form() {
+  console.log("form rendered")
   const parent = document.createElement("div");
   parent.className = "form-container";
 
