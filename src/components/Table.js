@@ -1,3 +1,5 @@
+import { sortAppointments } from "../app.logic"
+import state from "../app.state"
 import TableRow from "./TableRow"
 
 function Table(){
@@ -9,7 +11,6 @@ function Table(){
         <thead>
             <tr>
             <th>Name</th>
-            <th>Email</th>
             <th>Doctor</th>
             <th>Date</th>
             <th>Slot</th>
@@ -19,7 +20,24 @@ function Table(){
         </thead>
     `
     const tableBody = document.createElement("tbody")
-    tableBody.appendChild(TableRow("narayan", "narayan.pradhan1117@gmail.com", "Aniket Nayak", "2025-12-23", "12:00"))
+
+    let appointments = state.appointments || [];
+    if (state.sortAppointmentsBy) {
+        appointments = sortAppointments(appointments, state.sortAppointmentsBy);
+    }
+    for (const app of appointments) {
+        const row = TableRow(
+        app.name,
+        app.doctor,
+        app.date,
+        app.slot,
+        app.purpose,
+        );
+        tableBody.appendChild(row);
+    }
+
+    table.appendChild(tableBody);
+
     tableBody.id = "appointment-table-body"
 
     table.appendChild(tableBody)

@@ -1,7 +1,7 @@
 const state = {
     editingAppointmentId : null,
     sortAppointmentsBy : null,
-    isGridSelected : "true",
+    isGridSelected : true,
     appointments: [],
 }
 

@@ -1,9 +1,8 @@
 
-function TableRow(name, doctor, email, purpose, date, slot){
+function TableRow(name, doctor, date, slot, purpose){
       const row = document.createElement("tr");
         row.innerHTML = `
             <td>${name}</td>
-            <td>${email}</td>
             <td>${doctor}</td>
             <td>${date}</td>
             <td>${slot}</td>

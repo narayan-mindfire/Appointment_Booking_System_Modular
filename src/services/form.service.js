@@ -5,8 +5,8 @@ import { validationService } from "./validation.service";
 import { showToast } from "./dom.service";
 import { updateAvailableSlots } from "./dom.service";
 import { saveData } from "../app.storage";
-import DoctorOption from "../components/DoctorOption";
 import { renderDoctorOptions } from "./dom.service";
+import { renderApp } from "../components/App";
 
 
 
@@ -84,7 +84,7 @@ function formService() {
         saveData("appointments", appointments);
         form.reset();
         updateAvailableSlots();
-        // reloadAppointmentList();
+        renderApp()
         showToast("Appointment successfully booked!", "success");
     }
 
@@ -110,9 +110,6 @@ function formService() {
         };
     }
 
-//   function updateAvailableSlots() { ... }
-//   function setMinDateForInput() { ... }
-//   function markRequiredFields() { ... }
     /**
      * Handles doctor dropdown toggle visibility.
      */
@@ -155,17 +152,12 @@ function formService() {
             }
         });
     }
-//   function resetFormUI() { ... }
 
   return {
     handleForm,
-    // updateAvailableSlots,
-    // setMinDateForInput,
-    // markRequiredFields,
     handleDoctorDropdownClick,
     handleDoctorInputFieldClick,
     setDoctors,
-    // resetFormUI
   };
 }
 

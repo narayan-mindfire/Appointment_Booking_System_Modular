@@ -4,9 +4,11 @@ import getElements from "./utils/dom";
 // import { utilService } from "./logic.service.js";
 // import { formService } from "./form.manager.js";
 import formService from "./services/form.service";
-import { updateAvailableSlots } from "./services/dom.service";
-
-
+import { markRequiredFields, setMinDateForInput, updateAvailableSlots } from "./services/dom.service";
+import { saveData } from "./app.storage";
+import { renderApp } from "./components/App";
+import state from "./app.state";
+import { sortSetter } from "./app.logic";
 
 // const utils = utilService();
 const formModule = formService();
@@ -33,22 +35,31 @@ function registerEvents() {
     const appointmentListContainer = document.getElementById("appointment-list-container");
     const appointmentTable = document.getElementById("appointment-table");
 
-//   btnFull.addEventListener("click", () => {
-//     state.isGridSelected = false;
-//     utils.selectList();
-//   });
+    btnFull?.addEventListener("click", () => {
+        state.isGridSelected = false;
+        saveData("isGridSelected", false);
+        renderApp();
+        registerEvents(); 
+    });
 
-//   btnHalf.addEventListener("click", () => {
-//     state.isGridSelected = true;
-//     utils.selectGrid();
-//   });
+    btnHalf?.addEventListener("click", () => {
+        state.isGridSelected = true;
+        saveData("isGridSelected", true);
+        renderApp();
+        registerEvents();
+    });
+
+    setMinDateForInput()
+    formModule.setDoctors()
+    markRequiredFields()
+
 
   form.addEventListener("submit", formModule.handleForm);
   doctorEle.addEventListener("change", updateAvailableSlots);
   dateEle.addEventListener("change", updateAvailableSlots);
   document.addEventListener("click", formModule.handleDoctorDropdownClick);
   doctorEle.addEventListener("click", formModule.handleDoctorInputFieldClick);
-//   sortEle.addEventListener("change", utils.sortSetter);
+  sortEle.addEventListener("change", sortSetter);
 
 //   window.addEventListener("resize", () => {
 //   if (window.innerWidth <= 768) {
