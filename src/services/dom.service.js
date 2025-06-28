@@ -1,5 +1,6 @@
 import { SLOTS, VALIDATION_CONFIG } from "../app.const";
 import state from "../app.state";
+import AppointmentList from "../components/AppointmentList";
 /**
  * Clears all validation error messages.
  */
@@ -90,4 +91,11 @@ function markRequiredFields() {
     });
 }
 
-export {resetErrorMessages, showToast, updateAvailableSlots, markRequiredFields, setMinDateForInput}
+function renderAppointmentList() {
+  const container = document.getElementById("appointment-list-container");
+  if (!container) return;
+  container.innerHTML = "";
+  container.appendChild(AppointmentList());
+}
+
+export {resetErrorMessages, showToast, updateAvailableSlots, markRequiredFields, setMinDateForInput, renderAppointmentList}

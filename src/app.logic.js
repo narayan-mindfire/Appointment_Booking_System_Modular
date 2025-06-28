@@ -1,5 +1,5 @@
 import state from "./app.state";
-import { renderApp } from "./components/App";
+import { renderAppointmentList } from "./services/dom.service";
 
 /**
  * Sort appointments based on a given criteria.
@@ -36,7 +36,7 @@ function sortAppointments(appointments, sortBy) {
 
 function sortSetter(event) {
     state.sortAppointmentsBy = event.target.value;
-    renderApp();
+    renderAppointmentList();
 }
 
 export { sortAppointments, sortSetter };

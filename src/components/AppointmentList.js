@@ -1,12 +1,12 @@
 import { sortSetter } from "../app.logic";
 import state from "../app.state";
 import { saveData } from "../app.storage";
-import { renderApp } from "./App";
+import { renderAppointmentList } from "../services/dom.service";
 import AppointmentCards from "./AppointmentCards";
 import Table from "./Table";
 
 function AppointmentList() {
-  console.log("appointment rendered");
+  console.log("appointmentlist rendered")
   const parent = document.createElement("div");
   parent.className = "appointment-list";
   const header = document.createElement("div");
@@ -50,6 +50,7 @@ function AppointmentList() {
   parent.appendChild(header);
 
   const isGridSelected = state.isGridSelected;
+  
   if (isGridSelected) {
     parent.appendChild(AppointmentCards());
     btnHalf.style.backgroundColor = "#c5c4c4";
@@ -65,13 +66,13 @@ function AppointmentList() {
   btnFull?.addEventListener("click", () => {
     state.isGridSelected = false;
     saveData("isGridSelected", false);
-    renderApp();
+    renderAppointmentList();
   });
 
   btnHalf?.addEventListener("click", () => {
     state.isGridSelected = true;
     saveData("isGridSelected", true);
-    renderApp();
+    renderAppointmentList();
   });
   return parent;
 }

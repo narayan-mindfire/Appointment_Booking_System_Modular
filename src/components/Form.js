@@ -1,12 +1,10 @@
 import state from "../app.state";
 import { DOCS, VALIDATION_CONFIG } from "../app.const";
 import { saveData } from "../app.storage";
-import { showToast, resetErrorMessages, updateAvailableSlots, setMinDateForInput, markRequiredFields } from "../services/dom.service";
+import { showToast, resetErrorMessages, updateAvailableSlots, setMinDateForInput, markRequiredFields, renderAppointmentList } from "../services/dom.service";
 import { validationService } from "../services/validation.service";
-import { renderApp } from "./App";
 
 function Form() {
-  console.log("form rendered")
   const parent = document.createElement("div");
   parent.className = "form-container";
 
@@ -66,39 +64,6 @@ function Form() {
     });
   }
 
-//   function updateAvailableSlots() {
-//     const date = parent.querySelector("#date").value;
-//     const doctor = parent.querySelector("#doctor").value;
-//     const slotEl = parent.querySelector("#slot");
-//     if (!date || !doctor) return;
-
-//     const appointments = state.appointments || [];
-//     const booked = appointments
-//       .filter(
-//         (a) =>
-//           a.date === date &&
-//           a.doctor === doctor &&
-//           a.id !== state.editingAppointmentId
-//       )
-//       .map((a) => a.slot);
-
-//     slotEl.innerHTML = `<option value="">Select a time slot</option>`;
-//     const today = new Date();
-//     const isToday = new Date(date).toDateString() === today.toDateString();
-
-//     SLOTS.forEach((slot) => {
-//       const slotHour = parseInt(slot.split(":")[0]);
-//       const isTaken = booked.includes(slot);
-//       const isPast = isToday && slotHour <= today.getHours();
-//       if (!isTaken && !isPast) {
-//         const opt = document.createElement("option");
-//         opt.value = slot;
-//         opt.textContent = slot;
-//         slotEl.appendChild(opt);
-//       }
-//     });
-//   }
-
   function handleForm(e) {
     e.preventDefault();
 
@@ -144,7 +109,7 @@ function Form() {
     }
 
     saveData("appointments", state.appointments);
-    renderApp();
+    renderAppointmentList();
     showToast("Appointment successfully booked!", "success");
   }
 

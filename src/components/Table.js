@@ -5,7 +5,6 @@ import TableRow from "./TableRow"
 function Table(){
     const table = document.createElement("table")
     table.classList.add('appointment-table')
-    // table.classList.add('hidden')
     table.id = "appointment-table"
     table.innerHTML = `
         <thead>
