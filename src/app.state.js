@@ -12,9 +12,9 @@ const stateService = (function () {
     const observers = {};
 
     // notify all observers when a key changes
-    function notifyObservers(key, value) {
+    function notifyObservers(key) {
         if (observers[key]) {
-            observers[key].forEach(callback => callback(value));
+            observers[key].forEach(callback => callback());
         }
     }
 

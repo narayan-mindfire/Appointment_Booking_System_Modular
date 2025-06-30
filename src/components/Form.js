@@ -103,6 +103,7 @@ function Form() {
       if (idx !== -1) {
         updatedAppointments[idx] = { id: editingAppointmentId, ...fields };
         stateService.setState("editingAppointmentId", null)
+        parent.querySelector("#submit").value = ("Book Appointment");
       }
     } else {
       updatedAppointments.push({ id: Date.now(), ...fields });

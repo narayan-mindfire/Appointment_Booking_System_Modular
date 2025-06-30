@@ -3,6 +3,8 @@ import stateService from "../app.state";
 import state from "../app.state";
 import AppointmentList from "../components/AppointmentList";
 import Counter from "../components/Counter";
+import Modal from "../components/Modal";
+
 /**
  * Clears all validation error messages.
  */
@@ -129,4 +131,12 @@ function renderCounter(){
     container.appendChild(Counter());
 }
 
-export {resetErrorMessages, showToast, updateAvailableSlots, markRequiredFields, setMinDateForInput, renderAppointmentList, resetFormFields, renderCounter}
+/**
+ * renders the Modal component
+ */
+function renderModal(message, callback) {
+    const modal = Modal(message, callback);
+    document.body.appendChild(modal);
+}
+
+export {resetErrorMessages, showToast, updateAvailableSlots, markRequiredFields, setMinDateForInput, renderAppointmentList, resetFormFields, renderCounter, renderModal}
