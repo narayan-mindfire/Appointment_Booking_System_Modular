@@ -18,7 +18,10 @@ function Table(){
             </tr>
         </thead>
     `
+    const tbodyContainer = document.createElement("div")
+    tbodyContainer.id = "table-container"
     const tableBody = document.createElement("tbody")
+    tableBody.className = "table-body"
 
     let appointments = stateService.getState("appointments") || [];
     const sortAppointmentsBy = stateService.getState("sortAppointmentsBy");
@@ -30,7 +33,8 @@ function Table(){
         tableBody.appendChild(row);
     }
 
-    table.appendChild(tableBody);
+    tbodyContainer.appendChild(tableBody)
+    table.appendChild(tbodyContainer);
 
     tableBody.id = "appointment-table-body"
 

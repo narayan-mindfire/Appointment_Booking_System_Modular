@@ -22,7 +22,7 @@ function Modal(message, callback){
     modal.appendChild(modalContent)
 
     // listener
-    closeButton.addEventListener("click", modal.remove);
+    closeButton.addEventListener("click", () => {modal.remove()});
 
     return modal;
 }

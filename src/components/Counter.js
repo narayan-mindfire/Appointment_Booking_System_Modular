@@ -6,7 +6,7 @@ function Counter(){
     counter.className = "head-area";
     const count = stateService.getState("appointments").length || 0;
     counter.innerHTML = `
-        <h3>Total Appointments: <span id="total-appointments">${count}</span></h3>
+        <h3 id="total-appointments">Total Appointments: <span>${count}</span></h3>
     `
     return counter;
 }

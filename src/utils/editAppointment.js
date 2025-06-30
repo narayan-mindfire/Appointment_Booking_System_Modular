@@ -6,16 +6,16 @@ import { resetErrorMessages, showToast, updateAvailableSlots } from "../services
  * @param {number} id - Appointment ID
  */
 export function editAppointment(id) {
-    showToast("Appointment set to edit", "success");
     window.scrollTo({
         top: 0,
         left: 0,
         behavior: 'smooth'
     });
-
+    
     const appointments = stateService.getState("appointments");
     const appointment = appointments.find(app => app.id === id);
     if (!appointment) return;
+    showToast("Appointment set to edit", "success");
 
     stateService.setState("editingAppointmentId", id);
 
