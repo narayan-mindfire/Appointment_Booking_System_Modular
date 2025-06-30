@@ -30,6 +30,12 @@ body {
   background-color: #000;
 }
 
+#appointment-list-container {
+  all: unset;
+  display: contents;
+}
+
+
 .form-container,
 .appointment-list {
   background-color: #fff;
@@ -98,12 +104,12 @@ body {
 form input,
 form select {
   width: 100%;
-  padding: 10px;
+  padding: 5px;
   font-size: 16px;
   border: 1px solid #ddd;
   border-radius: 5px;
   margin-top: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 form label.form-label {

@@ -5,7 +5,10 @@ function ContentBody(){
     const parent = document.createElement("div");
     parent.className = "content";
     parent.appendChild(Form());
-    parent.appendChild(AppointmentList());
+    const appointmetnListContainer = document.createElement('div');
+    appointmetnListContainer.id = "appointment-list-container";
+    appointmetnListContainer.appendChild(AppointmentList());
+    parent.appendChild((appointmetnListContainer));
     return parent
 }
 
