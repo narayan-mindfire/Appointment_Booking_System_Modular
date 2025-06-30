@@ -30,12 +30,23 @@ body {
   background-color: #000;
 }
 
+#appointment-list-container {
+  all: unset;
+  display: contents;
+}
+
+#counter-container{
+  all: unser;
+  display: contents;
+}
+
+
 .form-container,
 .appointment-list {
   background-color: #fff;
   padding: 25px;
   border-radius: 10px;
-  max-height: 90vh;
+  max-height: 110vh;
   overflow-y: auto;
 }
 
@@ -45,17 +56,21 @@ body {
   margin-top: 1rem;
   background-color: #fff;
   border-radius: 8px;
-  overflow: hidden;
+  overflow-y: auto;
+  max-height: 80vh;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .appointment-table thead {
   background-color: #f0f0f0;
 }
+.table-container {
+  max-height: 100px;
+}
 
 .appointment-table th,
 .appointment-table td {
-  padding: 12px 16px;
+  padding: 6px 10px;
   text-align: left;
   border-bottom: 1px solid #e0e0e0;
 }
@@ -98,12 +113,12 @@ body {
 form input,
 form select {
   width: 100%;
-  padding: 10px;
+  padding: 5px;
   font-size: 16px;
   border: 1px solid #ddd;
   border-radius: 5px;
   margin-top: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 form label.form-label {
@@ -222,6 +237,8 @@ form select:focus {
   box-sizing: border-box;
   flex-direction: row;
   justify-content: space-between;
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 #appointment-cards.full-width-view .appointment-card {
@@ -253,6 +270,68 @@ form select:focus {
   background-color: rgb(226, 224, 224) !important;
   border: 2px solid black
 }
+
+/* Modal container */
+#myModal {
+  position: fixed;
+  z-index: 1000; /* on top of other content */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4); /* black with opacity */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Modal content box */
+#myModal > div {
+  background-color: #fff;
+  padding: 20px 30px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  position: relative;
+  text-align: center;
+}
+
+/* Close button */
+#myModal span {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Message text */
+#myModal p {
+  margin: 20px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Confirm button */
+#confirm-button {
+  background-color: rgb(234, 4, 4);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 4px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#confirm-button:hover {
+  background-color: #0056b3;
+}
+
 
 .card-content {
   flex-grow: 1;
@@ -420,8 +499,12 @@ form select:focus {
   }
 
   .head-area {
-    padding: 10px;
     font-size: 14px;
+    padding: 0;
+  }
+
+  #total-appointments{
+    margin-left: 25px;
   }
 
   form label.form-label {

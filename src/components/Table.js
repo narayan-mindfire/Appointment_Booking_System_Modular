@@ -1,15 +1,15 @@
+import { sortAppointments } from "../app.logic"
+import stateService from "../app.state"
 import TableRow from "./TableRow"
 
 function Table(){
     const table = document.createElement("table")
     table.classList.add('appointment-table')
-    // table.classList.add('hidden')
     table.id = "appointment-table"
     table.innerHTML = `
         <thead>
             <tr>
             <th>Name</th>
-            <th>Email</th>
             <th>Doctor</th>
             <th>Date</th>
             <th>Slot</th>
@@ -18,8 +18,24 @@ function Table(){
             </tr>
         </thead>
     `
+    const tbodyContainer = document.createElement("div")
+    tbodyContainer.id = "table-container"
     const tableBody = document.createElement("tbody")
-    tableBody.appendChild(TableRow("narayan", "narayan.pradhan1117@gmail.com", "Aniket Nayak", "2025-12-23", "12:00"))
+    tableBody.className = "table-body"
+
+    let appointments = stateService.getState("appointments") || [];
+    const sortAppointmentsBy = stateService.getState("sortAppointmentsBy");
+    if (sortAppointmentsBy) {
+        appointments = sortAppointments(appointments, sortAppointmentsBy);
+    }
+    for (const app of appointments) {
+        const row = TableRow(app);
+        tableBody.appendChild(row);
+    }
+
+    tbodyContainer.appendChild(tableBody)
+    table.appendChild(tbodyContainer);
+
     tableBody.id = "appointment-table-body"
 
     table.appendChild(tableBody)

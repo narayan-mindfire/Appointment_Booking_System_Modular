@@ -1,11 +1,12 @@
-import state from "../app.state"
+import stateService from "../app.state";
 
 function Counter(){
+    console.log("counter rendered")
     const counter = document.createElement("div");
     counter.className = "head-area";
-    const count = state.appointments.length || 0;
+    const count = stateService.getState("appointments").length || 0;
     counter.innerHTML = `
-        <h3>Total Appointments: <span id="total-appointments">${count}</span></h3>
+        <h3 id="total-appointments">Total Appointments: <span>${count}</span></h3>
     `
     return counter;
 }
