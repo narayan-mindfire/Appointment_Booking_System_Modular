@@ -1,8 +1,5 @@
 import { sortSetter } from "../app.logic";
 import stateService from "../app.state";
-import state from "../app.state";
-import { saveData } from "../app.storage";
-import { renderAppointmentList } from "../services/dom.service";
 import AppointmentCards from "./AppointmentCards";
 import Table from "./Table";
 

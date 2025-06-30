@@ -1,6 +1,5 @@
 import { SLOTS, VALIDATION_CONFIG } from "../app.const";
 import stateService from "../app.state";
-import state from "../app.state";
 import AppointmentList from "../components/AppointmentList";
 import Counter from "../components/Counter";
 import Modal from "../components/Modal";
@@ -84,7 +83,6 @@ function updateAvailableSlots() {
         }
     });
 }
-
 
 /**
  * sets current day as the minimum day to book appointment

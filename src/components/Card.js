@@ -1,3 +1,4 @@
+import stateService from "../app.state";
 import { deleteAppointment } from "../utils/deleteAppointment";
 import { editAppointment } from "../utils/editAppointment";
 
@@ -30,7 +31,7 @@ function Card(app){
             <button class="delete">Delete</button>
         </div>
     `;
-
+    if(app.id === stateService.getState("editingAppointmentId")) card.classList.add("highlighted");
     card.querySelector(".edit").addEventListener("click", () => editAppointment(app.id));
     card.querySelector(".delete").addEventListener("click", () => deleteAppointment(app.id));
     return card;

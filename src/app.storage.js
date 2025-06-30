@@ -20,6 +20,7 @@ function saveData(key, data) {
 function loadFromStorage() {
     stateService.setState("appointments", loadData("appointments", []))
     stateService.setState("isGridSelected", loadData("isGridSelected", true))
+    stateService.setState("editingAppointmentId", loadData("editingAppointmentId", null))
 }
 
 

@@ -38,14 +38,12 @@ export function editAppointment(id) {
     document.querySelectorAll("#appointment-table-body tr").forEach(row => {
         const cells = row.getElementsByTagName("td");
         const name = cells[0]?.textContent.trim();
-        const email = cells[1]?.textContent.trim();
-        const doctor = cells[2]?.textContent.trim();
-        const date = cells[3]?.textContent.trim();
-        const slot = cells[4]?.textContent.trim();
+        const doctor = cells[1]?.textContent.trim();
+        const date = cells[2]?.textContent.trim();
+        const slot = cells[3]?.textContent.trim();
 
         if (
             name === appointment.name &&
-            email === appointment.email &&
             doctor === appointment.doctor &&
             date === appointment.date &&
             slot === appointment.slot
@@ -57,13 +55,11 @@ export function editAppointment(id) {
     });
 
     // pre-fill form
-    console.log("to be edited appointment: ", appointment)
     document.getElementById("name").value = appointment.name;
     document.getElementById("email").value = appointment.email;
     document.getElementById("date").value = appointment.date;
     document.getElementById("doctor").value = appointment.doctor;
     updateAvailableSlots(); 
-    console.log("slot value : ", appointment.slot)
     document.getElementById("slot").value = appointment.slot;
     document.getElementById("purpose").value = appointment.purpose;
 
