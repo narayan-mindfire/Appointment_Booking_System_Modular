@@ -1,6 +1,7 @@
+import stateService from "../app.state";
 import state from "../app.state";
 import { saveData } from "../app.storage";
-import { renderAppointmentList, renderCounter, showToast } from "../services/dom.service";
+import { showToast } from "../services/dom.service";
 
 /**
  * function to delete appointments using id
@@ -10,10 +11,6 @@ import { renderAppointmentList, renderCounter, showToast } from "../services/dom
 export function deleteAppointment(id) {
     if (!confirm("Are you sure you want to delete this appointment?")) return;
     const updatedAppointments = state.appointments.filter(app => app.id !== id);
-    saveData("appointments", updatedAppointments)
-    state.appointments = updatedAppointments;
-    // re rendering appointmentlist and counter
-    renderAppointmentList();
-    renderCounter();
+    stateService.setState("appointments", updatedAppointments)
     showToast("Appointment deleted.", "success");
 }

@@ -1,4 +1,4 @@
-import state from "./app.state";
+import stateService from "./app.state";
 /**
  * Get data from localStorage.
  */
@@ -18,8 +18,8 @@ function saveData(key, data) {
  * loads data from localStorage
  */
 function loadFromStorage() {
-    state.appointments = loadData("appointments", []);
-    state.isGridSelected = loadData("isGridSelected", true);
+    stateService.setState("appointments", loadData("appointments", []))
+    stateService.setState("isGridSelected", loadData("isGridSelected", true))
 }
 
 

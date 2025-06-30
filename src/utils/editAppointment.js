@@ -1,4 +1,4 @@
-import state from "../app.state";
+import stateService from "../app.state";
 import { resetErrorMessages, showToast, updateAvailableSlots } from "../services/dom.service";
 
 /**
@@ -13,11 +13,11 @@ export function editAppointment(id) {
         behavior: 'smooth'
     });
 
-    const appointments = state.appointments;
+    const appointments = stateService.getState("appointments");
     const appointment = appointments.find(app => app.id === id);
     if (!appointment) return;
 
-    state.editingAppointmentId = id;
+    stateService.setState("editingAppointmentId", id);
 
     document.querySelectorAll(".appointment-card").forEach(card => {
         const cardName = card.querySelector(".patient-name")?.textContent.trim();

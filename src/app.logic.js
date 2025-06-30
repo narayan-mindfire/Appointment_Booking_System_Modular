@@ -1,6 +1,6 @@
 import state from "./app.state";
 import { renderAppointmentList } from "./services/dom.service";
-
+import stateService from "./app.state";
 /**
  * Sort appointments based on a given criteria.
  * @param {Array} appointments - The list of appointments to sort.
@@ -35,8 +35,7 @@ function sortAppointments(appointments, sortBy) {
 }
 
 function sortSetter(event) {
-    state.sortAppointmentsBy = event.target.value;
-    renderAppointmentList();
+    stateService.setState("sortAppointmentsBy", event.target.value)
 }
 
 export { sortAppointments, sortSetter };

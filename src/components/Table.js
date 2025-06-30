@@ -1,5 +1,5 @@
 import { sortAppointments } from "../app.logic"
-import state from "../app.state"
+import stateService from "../app.state"
 import TableRow from "./TableRow"
 
 function Table(){
@@ -20,9 +20,10 @@ function Table(){
     `
     const tableBody = document.createElement("tbody")
 
-    let appointments = state.appointments || [];
-    if (state.sortAppointmentsBy) {
-        appointments = sortAppointments(appointments, state.sortAppointmentsBy);
+    let appointments = stateService.getState("appointments") || [];
+    const sortAppointmentsBy = stateService.getState("sortAppointmentsBy");
+    if (sortAppointmentsBy) {
+        appointments = sortAppointments(appointments, sortAppointmentsBy);
     }
     for (const app of appointments) {
         const row = TableRow(app);

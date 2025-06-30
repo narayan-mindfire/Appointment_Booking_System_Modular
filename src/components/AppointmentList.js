@@ -1,4 +1,5 @@
 import { sortSetter } from "../app.logic";
+import stateService from "../app.state";
 import state from "../app.state";
 import { saveData } from "../app.storage";
 import { renderAppointmentList } from "../services/dom.service";
@@ -49,7 +50,7 @@ function AppointmentList() {
 
   parent.appendChild(header);
 
-  const isGridSelected = state.isGridSelected;
+  const isGridSelected = stateService.getState("isGridSelected");
   
   if (isGridSelected) {
     parent.appendChild(AppointmentCards());
@@ -64,15 +65,11 @@ function AppointmentList() {
   // event listeners
   sortSelect.addEventListener("change", sortSetter);
   btnFull?.addEventListener("click", () => {
-    state.isGridSelected = false;
-    saveData("isGridSelected", false);
-    renderAppointmentList();
+    stateService.setState("isGridSelected", false);
   });
 
   btnHalf?.addEventListener("click", () => {
-    state.isGridSelected = true;
-    saveData("isGridSelected", true);
-    renderAppointmentList();
+    stateService.setState("isGridSelected", true);
   });
   return parent;
 }

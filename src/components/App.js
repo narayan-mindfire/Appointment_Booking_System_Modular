@@ -2,7 +2,8 @@ import Counter from "./Counter";
 import MainHeading from "./MainHeading";
 import ContentBody from "./ContentBody";
 import Toast from "./Toast";
-
+import stateService from "../app.state";
+import { renderAppointmentList, renderCounter } from "../services/dom.service";
 
 export function renderApp() {
     console.log("starting app")
@@ -22,4 +23,14 @@ export function renderApp() {
     layout.appendChild(ContentBody())
 
     root.appendChild(layout);
+
+    // mapping state values to functions to trigger upon change
+    stateService.subscribe('appointments', () => {
+        renderAppointmentList();
+        renderCounter();
+    });
+
+    stateService.subscribe('isGridSelected', renderAppointmentList);
+
+    stateService.subscribe('sortAppointmentsBy', renderAppointmentList)
 }

@@ -1,4 +1,5 @@
 import { SLOTS, VALIDATION_CONFIG } from "../app.const";
+import stateService from "../app.state";
 import state from "../app.state";
 import AppointmentList from "../components/AppointmentList";
 import Counter from "../components/Counter";
@@ -60,9 +61,9 @@ function updateAvailableSlots() {
 
     if (!date || !doctorVal) return;
 
-    const appointments = state.appointments;
+    const appointments = stateService.getState("appointments");
     const bookedSlots = appointments
-        .filter(appointment => appointment.date === date && appointment.doctor === doctorVal && appointment.id !== state.editingAppointmentId)
+        .filter(appointment => appointment.date === date && appointment.doctor === doctorVal && appointment.id !== stateService.getState("editingAppointmentId"))
         .map(appointment => appointment.slot);
 
     const today = new Date();

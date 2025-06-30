@@ -1,8 +1,7 @@
-import state from "../app.state";
 import { DOCS, VALIDATION_CONFIG } from "../app.const";
-import { saveData } from "../app.storage";
-import { showToast, resetErrorMessages, updateAvailableSlots, setMinDateForInput, markRequiredFields, renderAppointmentList, resetFormFields, renderCounter } from "../services/dom.service";
+import { showToast, resetErrorMessages, updateAvailableSlots, setMinDateForInput, markRequiredFields, resetFormFields} from "../services/dom.service";
 import { validationService } from "../services/validation.service";
+import stateService from "../app.state.js";
 
 function Form() {
   const parent = document.createElement("div");
@@ -95,23 +94,21 @@ function Form() {
       showToast("Please input correct data and try again", "error");
       return;
     }
-
-    if (state.editingAppointmentId) {
-      const idx = state.appointments.findIndex(
-        (a) => a.id === state.editingAppointmentId
+    let updatedAppointments = [...stateService.getState("appointments")];
+    const editingAppointmentId = stateService.getState("editingAppointmentId")
+    if (editingAppointmentId) {
+      const idx = updatedAppointments.findIndex(
+        (a) => a.id === editingAppointmentId
       );
       if (idx !== -1) {
-        state.appointments[idx] = { id: state.editingAppointmentId, ...fields };
-        state.editingAppointmentId = null;
+        updatedAppointments[idx] = { id: editingAppointmentId, ...fields };
+        stateService.setState("editingAppointmentId", null)
       }
     } else {
-      state.appointments.push({ id: Date.now(), ...fields });
+      updatedAppointments.push({ id: Date.now(), ...fields });
     }
 
-    saveData("appointments", state.appointments);
-    // re-rendering appointment list and counter components
-    renderAppointmentList();
-    renderCounter();
+    stateService.setState("appointments", updatedAppointments)
     showToast("Appointment successfully booked!", "success");
     resetFormFields()
   }
