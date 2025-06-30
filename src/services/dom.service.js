@@ -8,6 +8,16 @@ function resetErrorMessages() {
     document.querySelectorAll(".error-message").forEach(ele => ele.textContent = "");
 }
 
+function resetFormFields(){
+    const form = document.getElementById("myForm")
+    form.querySelector("#name").value=""
+    form.querySelector("#email").value=""
+    form.querySelector("#date").value=""
+    form.querySelector("#doctor").value=""
+    form.querySelector("#slot").value=""
+    form.querySelector("#purpose").value=""
+}
+
 /**
  * function to show toast messages in the dom
  * @param {string} message 
@@ -98,4 +108,4 @@ function renderAppointmentList() {
   container.appendChild(AppointmentList());
 }
 
-export {resetErrorMessages, showToast, updateAvailableSlots, markRequiredFields, setMinDateForInput, renderAppointmentList}
+export {resetErrorMessages, showToast, updateAvailableSlots, markRequiredFields, setMinDateForInput, renderAppointmentList, resetFormFields}
