@@ -14,6 +14,9 @@ function saveData(key, data) {
     localStorage.setItem(key, JSON.stringify(data));
 }
 
+/**
+ * loads data from localStorage
+ */
 function loadFromStorage() {
     state.appointments = loadData("appointments", []);
     state.isGridSelected = loadData("isGridSelected", true);

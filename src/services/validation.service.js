@@ -1,3 +1,7 @@
+/**
+ * utility functions for different validations in input fields
+ * @returns function isRequired and function isEmailFormat
+ */
 const validationService = () => {
   function isRequired(value, key) {
     let res = (value.trim() !== "");

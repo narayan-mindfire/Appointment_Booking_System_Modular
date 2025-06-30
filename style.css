@@ -35,6 +35,11 @@ body {
   display: contents;
 }
 
+#counter-container{
+  all: unser;
+  display: contents;
+}
+
 
 .form-container,
 .appointment-list {

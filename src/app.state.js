@@ -1,3 +1,4 @@
+// application state
 const state = {
     editingAppointmentId : null,
     sortAppointmentsBy : null,

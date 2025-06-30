@@ -1,6 +1,7 @@
 import state from "../app.state"
 
 function Counter(){
+    console.log("loading counter")
     const counter = document.createElement("div");
     counter.className = "head-area";
     const count = state.appointments.length || 0;

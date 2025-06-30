@@ -1,6 +1,7 @@
 import { SLOTS, VALIDATION_CONFIG } from "../app.const";
 import state from "../app.state";
 import AppointmentList from "../components/AppointmentList";
+import Counter from "../components/Counter";
 /**
  * Clears all validation error messages.
  */
@@ -8,6 +9,9 @@ function resetErrorMessages() {
     document.querySelectorAll(".error-message").forEach(ele => ele.textContent = "");
 }
 
+/**
+ * resets form fields
+ */
 function resetFormFields(){
     const form = document.getElementById("myForm")
     form.querySelector("#name").value=""
@@ -79,6 +83,9 @@ function updateAvailableSlots() {
 }
 
 
+/**
+ * sets current day as the minimum day to book appointment
+ */
 function setMinDateForInput() {
     const today = new Date();
     const year = today.getFullYear();
@@ -101,6 +108,9 @@ function markRequiredFields() {
     });
 }
 
+/**
+ * renders appointment list component locally
+ */
 function renderAppointmentList() {
   const container = document.getElementById("appointment-list-container");
   if (!container) return;
@@ -108,4 +118,14 @@ function renderAppointmentList() {
   container.appendChild(AppointmentList());
 }
 
-export {resetErrorMessages, showToast, updateAvailableSlots, markRequiredFields, setMinDateForInput, renderAppointmentList, resetFormFields}
+/**
+ * renders counter
+ */
+function renderCounter(){
+    const container = document.getElementById("counter-container");
+    if(!container) return;
+    container.innerHTML = "";
+    container.appendChild(Counter());
+}
+
+export {resetErrorMessages, showToast, updateAvailableSlots, markRequiredFields, setMinDateForInput, renderAppointmentList, resetFormFields, renderCounter}

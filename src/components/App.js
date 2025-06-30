@@ -15,7 +15,10 @@ export function renderApp() {
 
     layout.appendChild(Toast())
     layout.appendChild(MainHeading());
-    layout.appendChild(Counter());
+    const counterContainer = document.createElement('div');
+    counterContainer.id = "counter-container";
+    counterContainer.appendChild(Counter())
+    layout.appendChild(counterContainer);
     layout.appendChild(ContentBody())
 
     root.appendChild(layout);

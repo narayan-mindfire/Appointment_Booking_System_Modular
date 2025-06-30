@@ -1,7 +1,7 @@
 import state from "../app.state";
 import { DOCS, VALIDATION_CONFIG } from "../app.const";
 import { saveData } from "../app.storage";
-import { showToast, resetErrorMessages, updateAvailableSlots, setMinDateForInput, markRequiredFields, renderAppointmentList, resetFormFields } from "../services/dom.service";
+import { showToast, resetErrorMessages, updateAvailableSlots, setMinDateForInput, markRequiredFields, renderAppointmentList, resetFormFields, renderCounter } from "../services/dom.service";
 import { validationService } from "../services/validation.service";
 
 function Form() {
@@ -109,7 +109,9 @@ function Form() {
     }
 
     saveData("appointments", state.appointments);
+    // re-rendering appointment list and counter components
     renderAppointmentList();
+    renderCounter();
     showToast("Appointment successfully booked!", "success");
     resetFormFields()
   }
